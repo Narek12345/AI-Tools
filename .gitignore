@@ -1,27 +1,27 @@
-# Виртуальная среда.
+# Virtual environment.
 env/
 venv/
 __pycache__/
 
-# Данные БД.
+# Database.
 *.db
 *.sqlite3
 
-# Логи.
+# Logs.
 *.log
 
-# Конфигурационные файлы IDE.
+# Config files IDE.
 .idea/
 .vscode/
 
-# Системные файлы MacOS/Windows.
+# System files MacOS/Windows.
 .DS_Store
 Thumbs.db
 
-# Настройки pycharm.
+# Settings pycharm.
 *.iml
 
-# Установленные зависимости.
+# Installed dependencies.
 *.egg
 *.egg-info
 dist/
