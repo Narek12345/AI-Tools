@@ -1,10 +1,7 @@
 /* Изменения фона и стилей */
 body {
-    background: linear-gradient(135deg, #7F8C8D, #95A5A6); /* Мягкий серо-синий градиент */
+    background-color: #f4f7fa;
     font-family: 'Arial', sans-serif;
-    background-attachment: fixed;
-    background-size: cover;
-    color: #ffffff; /* Белый текст для контраста */
 }
 
 header {
@@ -53,4 +50,8 @@ footer {
 /* Анимация для кнопки hamburger */
 .navbar-toggler-icon {
     background-color: #F39C12; /* Теплый желтый для иконки кнопки */
+}
+
+p {
+    font-size: 1.3rem;
 }
