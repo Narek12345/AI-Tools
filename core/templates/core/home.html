@@ -1,128 +1,129 @@
 {% extends 'core/base.html' %}
 
 {% block title %}
-	AI-Tools
+  AI-Tools
 {% endblock %}
 
 {% block content %}
-	<!-- Начало сайта (не хидер, header уже есть, это просто как начало сайта, сделай его красивым) -->
-	<div>
-		<h1>
-			Добро пожаловать в <span class="text-danger">AI-Tools</span>
-		</h1>
-		<p>
-			Мы помогаем вашему бизнесу автоматизировать процессы, экономить деньги и достигать новых высот! С помощью нашего сервиса вы можете забыть о дорогостоящей поддержке, минимизировать затраты и вывести качество обслуживания на совершенно новый уровень.
-		</p>
-	</div>
+  <!-- Начало сайта -->
+  <div class="container text-center py-5">
+    <h1 class="display-3 fw-bold text-primary mb-4">
+      Добро пожаловать в <span class="text-danger">AI-Tools</span>
+    </h1>
+    <p class="lead text-muted mb-5">
+      Мы помогаем вашему бизнесу автоматизировать процессы, экономить деньги и достигать новых высот! С помощью нашего сервиса вы можете забыть о дорогостоящей поддержке, минимизировать затраты и вывести качество обслуживания на совершенно новый уровень.
+    </p>
+    <a href="#why" class="btn btn-primary btn-lg">Узнать больше</a>
+  </div>
 
-<div class="container my-5">
-  <h2 class="text-center mb-5 fw-bold text-primary">
-    Почему AI-Tools — это ваш лучший выбор?
-  </h2>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item d-flex align-items-center rounded-3 shadow-sm mb-3 p-4" style="background: linear-gradient(45deg, #f0f8ff, #e6f7ff);">
-      <i class="bi bi-wallet2 text-primary fs-4 me-4"></i>
-      <div>
-        <strong class="fs-5 text-dark">Экономия до 87% бюджета:</strong>
-        <p class="mb-0 text-muted">Замените традиционную техподдержку нашим интеллектуальным решением и оптимизируйте расходы.</p>
-      </div>
-    </li>
-    <li class="list-group-item d-flex align-items-center rounded-3 shadow-sm mb-3 p-4" style="background: linear-gradient(45deg, #d4edda, #c3e6cb);">
-      <i class="bi bi-arrow-up-circle text-success fs-4 me-4"></i>
-      <div>
-        <strong class="fs-5 text-dark">Качество ответов увеличивается на 230%:</strong>
-        <p class="mb-0 text-muted">Наша система обеспечивает точные и мгновенные ответы на запросы ваших клиентов, превышая стандартные показатели качества.</p>
-      </div>
-    </li>
-    <li class="list-group-item d-flex align-items-center rounded-3 shadow-sm mb-3 p-4" style="background: linear-gradient(45deg, #fff3cd, #ffeeba);">
-      <i class="bi bi-clock text-warning fs-4 me-4"></i>
-      <div>
-        <strong class="fs-5 text-dark">Круглосуточная работа:</strong>
-        <p class="mb-0 text-muted">Искусственный интеллект не знает усталости. Ваши клиенты получают поддержку 24/7, без задержек и ошибок.</p>
-      </div>
-    </li>
-    <li class="list-group-item d-flex align-items-center rounded-3 shadow-sm mb-3 p-4" style="background: linear-gradient(45deg, #cce5ff, #b8daff);">
-      <i class="bi bi-arrows-expand text-info fs-4 me-4"></i>
-      <div>
-        <strong class="fs-5 text-dark">Масштабируемость:</strong>
-        <p class="mb-0 text-muted">Мы растем вместе с вашим бизнесом. От малого стартапа до крупной корпорации — AI-Tools адаптируется под любые задачи.</p>
-      </div>
-    </li>
-  </ul>
-</div>
+  <!-- Почему AI-Tools — это ваш лучший выбор? -->
+  <div class="container my-5" id="why">
+    <h2 class="text-center mb-5 fw-bold text-primary">Почему AI-Tools — это ваш лучший выбор?</h2>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item d-flex align-items-center rounded-3 shadow-sm mb-3 p-4 wow fadeInLeft" data-wow-delay="0.1s" style="background: linear-gradient(45deg, #f0f8ff, #e6f7ff);">
+        <i class="bi bi-wallet2 text-primary fs-4 me-4"></i>
+        <div>
+          <strong class="fs-5 text-dark">Экономия до 87% бюджета:</strong>
+          <p class="mb-0 text-muted">Замените традиционную техподдержку нашим интеллектуальным решением и оптимизируйте расходы.</p>
+        </div>
+      </li>
+      <li class="list-group-item d-flex align-items-center rounded-3 shadow-sm mb-3 p-4 wow fadeInLeft" data-wow-delay="0.3s" style="background: linear-gradient(45deg, #d4edda, #c3e6cb);">
+        <i class="bi bi-arrow-up-circle text-success fs-4 me-4"></i>
+        <div>
+          <strong class="fs-5 text-dark">Качество ответов увеличивается на 230%:</strong>
+          <p class="mb-0 text-muted">Наша система обеспечивает точные и мгновенные ответы на запросы ваших клиентов, превышая стандартные показатели качества.</p>
+        </div>
+      </li>
+      <li class="list-group-item d-flex align-items-center rounded-3 shadow-sm mb-3 p-4 wow fadeInLeft" data-wow-delay="0.5s" style="background: linear-gradient(45deg, #fff3cd, #ffeeba);">
+        <i class="bi bi-clock text-warning fs-4 me-4"></i>
+        <div>
+          <strong class="fs-5 text-dark">Круглосуточная работа:</strong>
+          <p class="mb-0 text-muted">Искусственный интеллект не знает усталости. Ваши клиенты получают поддержку 24/7, без задержек и ошибок.</p>
+        </div>
+      </li>
+      <li class="list-group-item d-flex align-items-center rounded-3 shadow-sm mb-3 p-4 wow fadeInLeft" data-wow-delay="0.7s" style="background: linear-gradient(45deg, #cce5ff, #b8daff);">
+        <i class="bi bi-arrows-expand text-info fs-4 me-4"></i>
+        <div>
+          <strong class="fs-5 text-dark">Масштабируемость:</strong>
+          <p class="mb-0 text-muted">Мы растем вместе с вашим бизнесом. От малого стартапа до крупной корпорации — AI-Tools адаптируется под любые задачи.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
 
-
-
-<h2 class="text-center mb-5">Что мы предлагаем?</h2>
-<div class="container my-5">
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <!-- Карточка 1 -->
-    <div class="col">
-      <div class="card border-primary shadow-sm rounded h-100">
-        <div class="card-header bg-primary text-white text-center py-3">
-          <h5 class="mb-0">Автоматизация поддержки клиентов</h5>
-        </div>
-        <div class="card-body text-primary d-flex flex-column">
-          <h5 class="card-title">Быстрые и точные ответы на запросы без участия человека.</h5>
-          <p class="card-text">Мы обеспечиваем автоматизацию, которая ускоряет взаимодействие с клиентами, позволяя вам сосредоточиться на важнейших задачах.</p>
-        </div>
-      </div>
-    </div>
-    <!-- Карточка 2 -->
-    <div class="col">
-      <div class="card border-primary shadow-sm rounded h-100">
-        <div class="card-header bg-primary text-white text-center py-3">
-          <h5 class="mb-0">Интеграция с вашими системами</h5>
-        </div>
-        <div class="card-body text-primary d-flex flex-column">
-          <h5 class="card-title">Наши инструменты легко подключаются к вашей CRM, сайту или приложению.</h5>
-          <p class="card-text">Мы обеспечим бесшовную интеграцию с вашими существующими решениями для оптимизации бизнес-процессов.</p>
+  <!-- Что мы предлагаем? -->
+  <div class="container my-5">
+    <h2 class="text-center mb-5">Что мы предлагаем?</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <!-- Карточка 1 -->
+      <div class="col">
+        <div class="card border-primary shadow-lg rounded h-100 wow fadeInUp" data-wow-delay="0.1s">
+          <div class="card-header bg-primary text-white text-center py-3">
+            <h5 class="mb-0">Автоматизация поддержки клиентов</h5>
+          </div>
+          <div class="card-body text-primary d-flex flex-column">
+            <h5 class="card-title">Быстрые и точные ответы на запросы без участия человека.</h5>
+            <p class="card-text">Мы обеспечиваем автоматизацию, которая ускоряет взаимодействие с клиентами, позволяя вам сосредоточиться на важнейших задачах.</p>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- Карточка 3 -->
-    <div class="col">
-      <div class="card border-primary shadow-sm rounded h-100">
-        <div class="card-header bg-primary text-white text-center py-3">
-          <h5 class="mb-0">Аналитика и улучшение процессов</h5>
+      <!-- Карточка 2 -->
+      <div class="col">
+        <div class="card border-primary shadow-lg rounded h-100 wow fadeInUp" data-wow-delay="0.3s">
+          <div class="card-header bg-primary text-white text-center py-3">
+            <h5 class="mb-0">Интеграция с вашими системами</h5>
+          </div>
+          <div class="card-body text-primary d-flex flex-column">
+            <h5 class="card-title">Наши инструменты легко подключаются к вашей CRM, сайту или приложению.</h5>
+            <p class="card-text">Мы обеспечим бесшовную интеграцию с вашими существующими решениями для оптимизации бизнес-процессов.</p>
+          </div>
         </div>
-        <div class="card-body text-primary d-flex flex-column">
-          <h5 class="card-title">Получайте ценные инсайты и повышайте эффективность своей команды.</h5>
-          <p class="card-text">Анализируйте данные и на основе полученных инсайтов улучшайте ключевые аспекты вашей работы.</p>
+      </div>
+      <!-- Карточка 3 -->
+      <div class="col">
+        <div class="card border-primary shadow-lg rounded h-100 wow fadeInUp" data-wow-delay="0.5s">
+          <div class="card-header bg-primary text-white text-center py-3">
+            <h5 class="mb-0">Аналитика и улучшение процессов</h5>
+          </div>
+          <div class="card-body text-primary d-flex flex-column">
+            <h5 class="card-title">Получайте ценные инсайты и повышайте эффективность своей команды.</h5>
+            <p class="card-text">Анализируйте данные и на основе полученных инсайтов улучшайте ключевые аспекты вашей работы.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="container my-5">
-  <h2 class="text-center mb-5 fw-bold text-primary">Как это работает?</h2>
-  <ol class="list-group list-group-numbered">
-    <li class="list-group-item d-flex align-items-center rounded-3 shadow-sm mb-4 p-4" style="background: linear-gradient(45deg, #f0f8ff, #e6f7ff);">
-      <i class="bi bi-plug text-info fs-4 me-4"></i>
-      <div>
-        <strong class="fs-5 text-dark">Подключение и настройка:</strong>
-        <p class="mb-0 text-muted">Мы поможем быстро интегрировать AI-Tools в вашу систему.</p>
-      </div>
-    </li>
-    <li class="list-group-item d-flex align-items-center rounded-3 shadow-sm mb-4 p-4" style="background: linear-gradient(45deg, #d4edda, #c3e6cb);">
-      <i class="bi bi-robot text-success fs-4 me-4"></i>
-      <div>
-        <strong class="fs-5 text-dark">Обучение модели:</strong>
-        <p class="mb-0 text-muted">Искусственный интеллект адаптируется под специфику вашего бизнеса.</p>
-      </div>
-    </li>
-    <li class="list-group-item d-flex align-items-center rounded-3 shadow-sm mb-4 p-4" style="background: linear-gradient(45deg, #fff3cd, #ffeeba);">
-      <i class="bi bi-rocket text-warning fs-4 me-4"></i>
-      <div>
-        <strong class="fs-5 text-dark">Запуск и оптимизация:</strong>
-        <p class="mb-0 text-muted">Начните экономить время и деньги с первого дня!</p>
-      </div>
-    </li>
-  </ol>
-</div>
+  <!-- Как это работает? -->
+  <div class="container my-5">
+    <h2 class="text-center mb-5 fw-bold text-primary">Как это работает?</h2>
+    <ol class="list-group list-group-numbered">
+      <li class="list-group-item d-flex align-items-center rounded-3 shadow-sm mb-4 p-4 wow fadeInLeft" data-wow-delay="0.1s" style="background: linear-gradient(45deg, #f0f8ff, #e6f7ff);">
+        <i class="bi bi-plug text-info fs-4 me-4"></i>
+        <div>
+          <strong class="fs-5 text-dark">Подключение и настройка:</strong>
+          <p class="mb-0 text-muted">Мы поможем быстро интегрировать AI-Tools в вашу систему.</p>
+        </div>
+      </li>
+      <li class="list-group-item d-flex align-items-center rounded-3 shadow-sm mb-4 p-4 wow fadeInLeft" data-wow-delay="0.3s" style="background: linear-gradient(45deg, #d4edda, #c3e6cb);">
+        <i class="bi bi-robot text-success fs-4 me-4"></i>
+        <div>
+          <strong class="fs-5 text-dark">Обучение модели:</strong>
+          <p class="mb-0 text-muted">Искусственный интеллект адаптируется под специфику вашего бизнеса.</p>
+        </div>
+      </li>
+      <li class="list-group-item d-flex align-items-center rounded-3 shadow-sm mb-4 p-4 wow fadeInLeft" data-wow-delay="0.5s" style="background: linear-gradient(45deg, #fff3cd, #ffeeba);">
+        <i class="bi bi-rocket text-warning fs-4 me-4"></i>
+        <div>
+          <strong class="fs-5 text-dark">Запуск и оптимизация:</strong>
+          <p class="mb-0 text-muted">Начните экономить время и деньги с первого дня!</p>
+        </div>
+      </li>
+    </ol>
+  </div>
 
-	<div class="container my-5 text-center">
-		<a href="#" class="btn btn-danger btn-lg">Получить бесплатную демо-версию</a>
-	</div>
+  <!-- Демо-версия -->
+  <div class="container my-5 text-center">
+    <a href="#" class="btn btn-danger btn-lg wow bounceIn" data-wow-delay="0.7s">Получить бесплатную демо-версию</a>
+  </div>
 {% endblock %}
