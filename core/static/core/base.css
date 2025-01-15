@@ -1,30 +1,33 @@
 /* Изменения фона и стилей */
 body {
-    background-color: #f4f7fa;
+    background: linear-gradient(135deg, #7F8C8D, #95A5A6); /* Мягкий серо-синий градиент */
     font-family: 'Arial', sans-serif;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #ffffff; /* Белый текст для контраста */
 }
 
 header {
-    background-color: #34495e;
+    background-color: rgba(54, 69, 79, 0.9); /* Темно-синий с прозрачностью */
 }
 
 header h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 700;
 }
 
 .nav-item .nav-link {
-    color: #ecf0f1 !important;
+    color: #ffffff !important;
     font-size: 1.1rem;
 }
 
 .nav-item .nav-link:hover {
-    color: #f39c12 !important;
+    color: #F39C12 !important; /* Теплый желтый акцент при наведении */
 }
 
 footer {
-    background-color: #2c3e50;
-    color: #ecf0f1;
+    background-color: rgba(54, 69, 79, 0.9); /* Прозрачный темно-синий футер */
+    color: #ffffff;
 }
 
 .footer-text {
@@ -39,7 +42,7 @@ footer {
 
 @media (max-width: 768px) {
     header h1 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
 
     .nav-item .nav-link {
@@ -49,5 +52,5 @@ footer {
 
 /* Анимация для кнопки hamburger */
 .navbar-toggler-icon {
-    background-color: #f39c12; /* Цвет иконки кнопки */
+    background-color: #F39C12; /* Теплый желтый для иконки кнопки */
 }
