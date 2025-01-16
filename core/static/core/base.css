@@ -55,3 +55,36 @@ footer {
 p {
     font-size: 1.3rem;
 }
+
+/* Стили для карточек  */
+.card-purple-border {
+  border: 2px solid #9c27b0; /* Фиолетовая рамка */
+  color: #333; /* Цвет текста по умолчанию */
+}
+
+.card-purple-border .card-title,
+.card-purple-border .card-subtitle {
+  color: #333; /* Темный цвет заголовков по умолчанию*/
+}
+
+.card-purple-border .card-header.card-purple-title {
+    background-color: #9c27b0;
+    color: white;
+}
+
+.btn-purple {
+    background-color: #9c27b0;
+    color: white;
+    border-color: #9c27b0;
+}
+
+.btn-purple:hover {
+  background-color: #7b1fa2;
+  border-color: #7b1fa2;
+}
+.btn-purple:focus,
+.btn-purple:active {
+    background-color: #7b1fa2 !important;
+    border-color: #7b1fa2 !important;
+    box-shadow: none;
+}
