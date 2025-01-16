@@ -1,5 +1,7 @@
 {% extends 'core/base.html' %}
 
+{% load static %}
+
 {% block title %}
 	AI-Tools
 {% endblock %}
@@ -99,7 +101,8 @@
 								Мы помогаем автоматизировать обработку запросов в Avito, чтобы вы могли быстрее отвечать клиентам, увеличивать продажи и экономить ресурсы.
 							</p>
 							<a href="#" class="btn btn-success btn-lg mt-auto d-flex align-items-center justify-content-center gap-2 shadow-sm rounded-pill" style="padding: 0.6rem 1.5rem; transition: all 0.3s ease;">
-								<i class="bi bi-shop"></i> Узнать больше
+								<img src="{% static 'core/images/mini_avito_icon.png' %}" alt="Avito" style="height: 1.5rem; width: auto;">
+								Узнать больше
 							</a>
 						</div>
 					</div>
