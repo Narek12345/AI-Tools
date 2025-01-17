@@ -74,17 +74,15 @@ p {
 
 .btn-purple {
     background-color: #9c27b0;
-    color: white;
+    color: white !important; /* Принудительно устанавливаем белый текст */
     border-color: #9c27b0;
 }
 
-.btn-purple:hover {
-  background-color: #7b1fa2;
-  border-color: #7b1fa2;
-}
+.btn-purple:hover,
 .btn-purple:focus,
 .btn-purple:active {
-    background-color: #7b1fa2 !important;
-    border-color: #7b1fa2 !important;
-    box-shadow: none;
+    background-color: #7b1fa2;
+    border-color: #7b1fa2;
+    color: white !important; /* Принудительно оставляем текст белым */
+    text-decoration: none; /* Убираем возможные подчёркивания */
 }
