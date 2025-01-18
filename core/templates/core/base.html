@@ -30,7 +30,7 @@
                             <li class="nav-item"><a class="nav-link" href="{% url 'core:home' %}">Главная</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'core:about' %}">О нас</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'core:list_projects' %}">Проекты</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Поддержка</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'core:support' %}">Поддержка</a></li>
 
                             {% if user.is_authenticated %}
                                 <li class="nav-item"><a class="nav-link" href="#">Выйти</a></li>

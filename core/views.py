@@ -11,3 +11,7 @@ def about(request):
 
 def list_projects(request):
 	return render(request, 'core/list_projects.html')
+
+
+def support(request):
+	return render(request, 'core/support.html')
