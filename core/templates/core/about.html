@@ -1,9 +1,80 @@
 {% extends 'core/base.html' %}
 
+{% load static %}
+
 {% block title %}
-	AI-Tools о нас
+    О нас - AI-Tools
 {% endblock %}
 
 {% block content %}
-	<h1>О нас</h1>
+<div class="container py-5">
+    <!-- Заголовок -->
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-primary">О нас</h1>
+        <p class="lead text-secondary">Мы создаём инновационные AI-решения, которые помогают вашему бизнесу расти и процветать.</p>
+    </div>
+
+    <!-- Наша миссия -->
+    <div class="row mb-5">
+        <div class="col-lg-12">
+            <h2 class="text-primary fw-bold mb-4">Наша миссия</h2>
+            <p class="text-muted">
+                В AI-Tools мы ставим своей целью помогать бизнесу внедрять передовые технологии. 
+                Мы стремимся создать решения, которые упрощают процессы, увеличивают продуктивность и позволяют сосредоточиться на главном.
+            </p>
+            <p class="text-muted">
+                Каждый продукт, который мы разрабатываем, отражает нашу приверженность к качеству и инновациям. Мы верим, что искусственный интеллект — это будущее, которое уже наступило.
+            </p>
+        </div>
+    </div>
+
+    <!-- Наши ценности -->
+    <div class="bg-light p-5 rounded-4 mb-5">
+        <h2 class="text-center text-primary fw-bold mb-4">Наши ценности</h2>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <div class="p-4">
+                    <i class="bi bi-lightbulb-fill text-primary mb-3" style="font-size: 40px;"></i>
+                    <h5 class="fw-bold">Инновации</h5>
+                    <p class="text-muted">Мы всегда ищем новые пути решения задач, чтобы сделать жизнь проще и эффективнее.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4">
+                    <i class="bi bi-trophy-fill text-primary mb-3" style="font-size: 40px;"></i>
+                    <h5 class="fw-bold">Качество</h5>
+                    <p class="text-muted">Каждое наше решение проходит строгий контроль, чтобы соответствовать ожиданиям клиентов.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4">
+                    <i class="bi bi-person-lines-fill text-primary mb-3" style="font-size: 40px;"></i>
+                    <h5 class="fw-bold">Поддержка</h5>
+                    <p class="text-muted">Мы всегда на связи, чтобы помочь вам достичь ваших целей.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Преимущества работы с нами -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="text-primary fw-bold mb-4 text-center">Почему выбирают нас?</h2>
+            <ul class="list-unstyled text-muted text-center">
+                <li class="mb-3">
+                    <i class="bi bi-check-circle-fill text-primary me-2"></i> Индивидуальный подход к каждому проекту.
+                </li>
+                <li class="mb-3">
+                    <i class="bi bi-check-circle-fill text-primary me-2"></i> Высокая скорость внедрения решений.
+                </li>
+                <li class="mb-3">
+                    <i class="bi bi-check-circle-fill text-primary me-2"></i> Команда профессионалов с многолетним опытом.
+                </li>
+                <li class="mb-3">
+                    <i class="bi bi-check-circle-fill text-primary me-2"></i> Превосходное соотношение цены и качества.
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 {% endblock %}
