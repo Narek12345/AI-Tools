@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 
 {% block title %}
-	Служба поддержки - AI-Tools
+	Поддержка клиентов - AI-Tools
 {% endblock %}
 
 {% block content %}
@@ -9,7 +9,23 @@
 	<div class="text-center mb-5">
 		<h1 class="display-4 fw-bold text-primary">Служба поддержки</h1>
 		<p class="lead text-secondary">
-			Здесь вы можете написать свои претензии, предложения по улучшению сервиса либо же просто позадавать вопросы. Но прежде чем написать, пожалуйста, зарегестрируйтесь либо же войдите в уже существующую запись.
+			Мы здесь, чтобы помочь вам! Напишите нам свои вопросы, предложения или комментарии, и мы постараемся ответить как можно быстрее. 
+            Пожалуйста, войдите в свою учётную запись или зарегистрируйтесь, чтобы воспользоваться этой формой.
 		</p>
+	</div>
+
+	<!-- Форма обратной связи. -->
+	<div class="row justify-content-center">
+		<div class="col-md-8">
+			<form>
+				<div class="mb-4">
+					<label for="message" class="form-label">Ваше сообщение</label>
+					<textarea class="form-control" id="message" rows="6" placeholder="Напишите ваше сообщение здесь..."></textarea>
+				</div>
+				<div class="text-center">
+					<button type="submit" class="btn btn-primary btn-lg">Отправить сообщение</button>
+				</div>
+			</form>
+		</div>
 	</div>
 {% endblock %}
