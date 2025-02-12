@@ -9,4 +9,4 @@ class TelegramPageTest(TestCase):
 	def test_uses_home_telegram_template(self):
 		"""Тест: используется домашний шаблон."""
 		response = self.client.get('/telegram')
-		self.assertTemplateUsed(response, 'home_telegram.html')
+		self.assertTemplateUsed(response, 'telegram_app/home_telegram.html')
