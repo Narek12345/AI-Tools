@@ -3,7 +3,7 @@ from django.test import TestCase
 
 
 class TelegramPageTest(TestCase):
-	"""Тест домашней страницы."""
+	"""Тест домашней страницы telegram."""
 
 
 	def test_uses_home_telegram_template(self):
