@@ -10,3 +10,8 @@ class TelegramBot(models.Model):
 
 	class Meta:
 		db_table = 'telegram_bot'
+
+
+	def save(self, *args, **kwargs):
+		self.full_clean()
+		super().save(*args, **kwargs)
