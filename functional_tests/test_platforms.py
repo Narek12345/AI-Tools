@@ -34,3 +34,11 @@ class NewVisitorTest(FunctionalTest):
 		
 		# Нарек нажимает на кнопку "Подключить бота" для автоматизации.
 		self.browser.find_element(By.LINK_TEXT, 'Подключить бота').click()
+
+		# Появляется форма для ввода данных для подключения Telegram бота. Нарек вводит в форму свой Telegram bot token и нажимает Enter.
+		inputbox = self.browser.find_element(By.ID, "id_telegram_bot_token")
+		inputbox.send_keys("8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg")
+		intupbox.send_keys(Keys.ENTER)
+
+		# Открывается страница с его ботом. Он видит кнопку "Запустить" рядом с его созданным Telegram ботом.
+		self.browser.fail("Нажимает на кнопку 'Запустить'.")
