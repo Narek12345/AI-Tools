@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # My apps:
+    'core_app',
     'telegram_app',
 ]
 
