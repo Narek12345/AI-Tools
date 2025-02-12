@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 
 from .base import FunctionalTest
@@ -32,6 +34,3 @@ class NewVisitorTest(FunctionalTest):
 		
 		# Нарек нажимает на кнопку "Подключить бота" для автоматизации.
 		self.browser.find_element(By.LINK_TEXT, 'Подключить бота').click()
-
-		# После чего его просят авторизоваться.
-		self.fail("Стадия авторизации.")
