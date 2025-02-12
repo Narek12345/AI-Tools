@@ -9,4 +9,4 @@ class HomePageTest(TestCase):
 	def test_uses_home_template(self):
 		"""Тест: используется домашний шаблон."""
 		response = self.client.get('/')
-		self.assertTemplateUsed(response, 'home.html')
+		self.assertTemplateUsed(response, 'core_app/home.html')
