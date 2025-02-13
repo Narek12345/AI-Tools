@@ -1,1 +1,11 @@
 {% extends 'core_app/base.html' %}
+
+{% block content %}
+	<h2>Подключить Telegram бота</h2>
+
+	<form>
+		<input type="text" name="telegram_bot_name" placeholder="Введите название бота">
+		<input type="text" name="telegram_bot_token" placeholder="Вставьте токен вашего бота">
+		<button>Отправить</button>
+	</form>
+{% endblock %}
