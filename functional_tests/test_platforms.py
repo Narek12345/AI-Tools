@@ -1,6 +1,7 @@
 import time
 
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
 
@@ -16,7 +17,7 @@ class NewVisitorTest(FunctionalTest):
     def test_telegram_platform(self):
         """Тест: пользователь хочет прочитать больше о автоматизации в Telegram."""
 
-        # Нарек решает открыть главную страницу сайта.
+        # Пользователь решает открыть главную страницу сайта.
         self.browser.get(self.live_server_url)
 
         # Проверяет, что заголовок содержит "AI-Tools".
@@ -36,13 +37,15 @@ class NewVisitorTest(FunctionalTest):
         # Проверяет, что на странице Telegram есть заголовок с названием платформы.
         header_text = self.browser.find_element(By.TAG_NAME, "h2").text
         
-        # Нарек нажимает на кнопку "Подключить бота" для автоматизации.
+        # Пользователь нажимает на кнопку "Подключить бота" для автоматизации.
         self.browser.find_element(By.LINK_TEXT, 'Подключить бота').click()
 
-        # Появляется форма для ввода данных для подключения Telegram бота. Нарек вводит в форму свой Telegram bot token и нажимает Enter.
-        inputbox = self.browser.find_element(By.ID, "id_telegram_bot_token")
-        inputbox.send_keys("8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg")
-        intupbox.send_keys(Keys.ENTER)
+        # Появляется форма для ввода данных для подключения Telegram бота. Пользователь вводит в форму название боту и свой Telegram bot token и нажимает Enter.
+        bot_name_field = self.browser.find_element(By.NAME, "telegram_bot_name")
+        bot_name_field.send_keys("Telegram bot")
+        bot_token_field = self.browser.find_element(By.NAME, "telegram_bot_token")
+        bot_token_field.send_keys("8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg")
+        bot_token_field.send_keys(Keys.ENTER)
 
         # Открывается страница с его ботом. Он видит кнопку "Запустить" рядом с его созданным Telegram ботом.
-        self.browser.fail("Нажимает на кнопку 'Запустить'.")
+        self.fail("Нажимает на кнопку 'Запустить'.")
