@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>AI-Tools</title>
-</head>
-<body>
-	<h2>AI-Tools</h2>
+{% extends 'core_app/base.html' %}
 
-	<a href="{% url 'telegram_app:connect_telegram_bot' %}">Подключить бота</a>
-</body>
-</html>
+{% block content %}
+	<h2>Telegram</h2>
+
+	<a href="{% url 'telegram_app:connect_bot' %}">Подключить бота</a>
+{% endblock %}
