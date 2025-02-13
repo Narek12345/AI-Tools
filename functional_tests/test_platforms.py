@@ -27,7 +27,7 @@ class NewVisitorTest(FunctionalTest):
 
         # Находит ссылку "Telegram" и кликает по ней.
         telegram_link = self.browser.find_element(By.LINK_TEXT, "Telegram")
-        ActionChains(self.browser).move_to_element(telegram_link).click()
+        self.browser.execute_script("arguments[0].click();", telegram_link)
 
         # Проверяет, что URL изменился на страницу Telegram.
         self.assertIn("/telegram", self.browser.current_url)
