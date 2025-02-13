@@ -30,6 +30,3 @@ build/
 
 # Config keys.
 .env
-
-# STATIC and MEDIA files.
-static
