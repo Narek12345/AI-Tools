@@ -1,0 +1,89 @@
+
+/* Изменения фона и стилей */
+body {
+    background-color: #f4f7fa;
+    font-family: 'Arial', sans-serif;
+}
+
+header {
+    background-color: rgba(54, 69, 79, 0.9); /* Темно-синий с прозрачностью */
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.nav-item .nav-link {
+    color: #ffffff !important;
+    font-size: 1.1rem;
+}
+
+.nav-item .nav-link:hover {
+    color: #F39C12 !important; /* Теплый желтый акцент при наведении */
+}
+
+footer {
+    background-color: rgba(54, 69, 79, 0.9); /* Прозрачный темно-синий футер */
+    color: #ffffff;
+}
+
+.footer-text {
+    font-size: 0.9rem;
+}
+
+/* Плавное раскрытие меню */
+.navbar-collapse {
+    transition: max-height 0.5s ease;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .nav-item .nav-link {
+        font-size: 1rem;
+    }
+}
+
+/* Анимация для кнопки hamburger */
+.navbar-toggler-icon {
+    background-color: #F39C12; /* Теплый желтый для иконки кнопки */
+}
+
+p {
+    font-size: 1.3rem;
+}
+
+/* Стили для карточек  */
+.card-purple-border {
+  border: 2px solid #9c27b0; /* Фиолетовая рамка */
+  color: #333; /* Цвет текста по умолчанию */
+}
+
+.card-purple-border .card-title,
+.card-purple-border .card-subtitle {
+  color: #333; /* Темный цвет заголовков по умолчанию*/
+}
+
+.card-purple-border .card-header.card-purple-title {
+    background-color: #9c27b0;
+    color: white;
+}
+
+.btn-purple {
+    background-color: #9c27b0;
+    color: white !important; /* Принудительно устанавливаем белый текст */
+    border-color: #9c27b0;
+}
+
+.btn-purple:hover,
+.btn-purple:focus,
+.btn-purple:active {
+    background-color: #7b1fa2;
+    border-color: #7b1fa2;
+    color: white !important; /* Принудительно оставляем текст белым */
+    text-decoration: none; /* Убираем возможные подчёркивания */
+}
