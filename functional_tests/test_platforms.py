@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 
 
-from .base import FunctionalTest
+from .base import FunctionalTest, wait
 
 
 
@@ -12,6 +12,7 @@ class NewVisitorTest(FunctionalTest):
     """Тест нового посетителя."""
 
 
+    @wait
     def test_telegram_platform(self):
         """Тест: пользователь хочет прочитать больше о автоматизации в Telegram."""
 
