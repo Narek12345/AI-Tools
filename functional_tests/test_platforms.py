@@ -41,9 +41,9 @@ class NewVisitorTest(FunctionalTest):
         self.browser.find_element(By.LINK_TEXT, 'Подключить бота').click()
 
         # Появляется форма для ввода данных для подключения Telegram бота. Пользователь вводит в форму название боту и свой Telegram bot token и нажимает Enter.
-        bot_name_field = self.browser.find_element(By.NAME, "telegram_bot_name")
+        bot_name_field = self.browser.find_element(By.NAME, "name")
         bot_name_field.send_keys("Telegram bot")
-        bot_token_field = self.browser.find_element(By.NAME, "telegram_bot_token")
+        bot_token_field = self.browser.find_element(By.NAME, "token")
         bot_token_field.send_keys("8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg")
         bot_token_field.send_keys(Keys.ENTER)
 
