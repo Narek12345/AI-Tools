@@ -12,13 +12,16 @@ class ConnectTelegramBotFormTest(TestCase):
 	def test_form_telegram_bot_input_has_placeholder_and_css_classes(self):
 		"""Тест: форма отображает текстовое поле ввода."""
 		form = ConnectTelegramBotForm()
-		self.assertIn("placeholder='Введите название бота'", form.as_p())
-		self.assertIn("placeholder='Вставьте токен вашего бота'", form.as_p())
+		self.assertIn('placeholder="Введите название бота"', form.as_p())
+		self.assertIn('placeholder="Вставьте токен вашего бота"', form.as_p())
 
 
 	def test_form_validation_for_blank_fields(self):
 		"""Тест: проверка валидации для пустых полей."""
-		form = ConnectTelegramBotForm(data={'telegram_bot_name': '', 'telegram_bot_token': ''})
+		form = ConnectTelegramBotForm(data={
+			'bot_name': '',
+			'bot_token': '',
+		})
 		self.assertFalse(form.is_valid())
 
 
