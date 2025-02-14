@@ -5,7 +5,7 @@ from telegram_app.models import TelegramBot
 
 
 class TelegramPageTest(TestCase):
-	"""Тест домашней страницы telegram."""
+	"""Тест домашней страницы Telegram."""
 
 
 	def test_uses_home_telegram_template(self):
@@ -16,7 +16,7 @@ class TelegramPageTest(TestCase):
 
 
 class ConnectTelegramBotTest(TestCase):
-
+	"""Тест подключения Telegram бота."""
 
 	def test_connect_telegram_bot(self):
 		"""Тест: подключение нового telegram bot."""
