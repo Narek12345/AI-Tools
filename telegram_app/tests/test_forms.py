@@ -19,8 +19,8 @@ class ConnectTelegramBotFormTest(TestCase):
 	def test_form_validation_for_blank_fields(self):
 		"""Тест: проверка валидации для пустых полей."""
 		form = ConnectTelegramBotForm(data={
-			'bot_name': '',
-			'bot_token': '',
+			'name': '',
+			'token': '',
 		})
 		self.assertFalse(form.is_valid())
 
@@ -29,8 +29,8 @@ class ConnectTelegramBotFormTest(TestCase):
 		"""Тест сохранения формы."""
 		form = ConnectTelegramBotForm(
 			data={
-				'bot_name': 'Telegram bot',
-				'bot_token': '8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg'
+				'name': 'Telegram bot',
+				'token': '8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg'
 			}
 		)
 		self.assertTrue(form.is_valid())
