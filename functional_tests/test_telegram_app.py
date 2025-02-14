@@ -47,5 +47,11 @@ class NewVisitorTest(FunctionalTest):
         bot_token_field.send_keys("8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg")
         bot_token_field.send_keys(Keys.ENTER)
 
-        # Открывается страница с его ботом. Он видит кнопку "Запустить" рядом с его созданным Telegram ботом.
+        # Открывается страница с добавленным только что ботом. Пользователь видит кнопку "Запустить" рядом с его созданным Telegram ботом. Пользователь нажимает на кнопку "Запустить".
+        header_text = self.browser.find_element(By.TAG_NAME, "h2").text
+        self.assertIn(header_text, "Telegram bot")
+        run_button = self.browser.find_element(By.XPATH, '//button[text()="Запустить"]')
+        self.assertIsNotNone(run_button)
+        run_button.click()
+
         self.fail("Нажимает на кнопку 'Запустить'.")
