@@ -19,10 +19,12 @@ class TelegramBotModelTest(TestCase):
 	def test_duplicate_telegram_bot_are_invalid(self):
 		"""Тест: повторы подключения Telegram ботов не допустимы."""
 		TelegramBot.objects.create(
+			name="Bot1",
 			token="8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg"
 		)
 
 		with self.assertRaises(ValidationError):
 			TelegramBot.objects.create(
+				name="Bot2",
 				token="8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg"
 			)
