@@ -18,6 +18,7 @@ class TelegramPageTest(TestCase):
 class ConnectTelegramBotTest(TestCase):
 	"""Тест подключения Telegram бота."""
 
+
 	def test_connect_telegram_bot(self):
 		"""Тест: подключение нового telegram bot."""
 		response = self.client.get('/telegram/connect-bot')
