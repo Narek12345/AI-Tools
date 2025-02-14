@@ -3,9 +3,9 @@
 {% block content %}
 	<h2>Подключить Telegram бота</h2>
 
-	<form>
-		<input type="text" name="telegram_bot_name" placeholder="Введите название бота">
-		<input type="text" name="telegram_bot_token" placeholder="Вставьте токен вашего бота">
-		<button>Отправить</button>
+	<form action="{% url 'telegram_app:connect_bot' %}" method="POST">
+		{{ form.as_p }}
+		{% csrf_token %}
+		<button>Подключить бота</button>
 	</form>
 {% endblock %}
