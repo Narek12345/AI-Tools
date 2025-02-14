@@ -26,8 +26,8 @@ class ConnectTelegramBotFormTest(TestCase):
 		"""Тест сохранения формы."""
 		form = ConnectTelegramBotForm(
 			data={
-				'telegram_bot_name': 'Telegram bot',
-				'telegram_bot_token': '8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg'
+				'bot_name': 'Telegram bot',
+				'bot_token': '8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg'
 			}
 		)
 		self.assertTrue(form.is_valid())
