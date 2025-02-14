@@ -38,6 +38,18 @@ class ConnectTelegramBotTest(TestCase):
 		self.assertRedirects(response, f'/telegram/bot/{bot.id}')
 
 
+	def test_connection_is_successful_with_seccessful_data(self):
+		"""Тест: подключение проходит успешно при передаче валидных данных."""
+		response = self.client.post(
+			'/telegram/connect-bot',
+			data={
+				'name': 'Telegram bot',
+				'token': '8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg',
+			}
+		)
+		self.assertEqual(1, TelegramBot.objects.count())
+
+
 	def test_for_invalid_input_nothing_saved_to_db(self):
 		"""Тест на недопустимый ввод: ничего не сохранится в БД."""
 		response = self.client.post(
