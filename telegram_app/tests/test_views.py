@@ -1,5 +1,7 @@
 from django.test import TestCase
 
+from telegram_app.models import TelegramBot
+
 
 
 class TelegramPageTest(TestCase):
@@ -33,4 +35,4 @@ class ConnectTelegramBotTest(TestCase):
 		)
 		bot = TelegramBot.objects.first()
 
-		self.assertRedirect(response, f'/telegram/bot/{bot.id}')
+		self.assertRedirects(response, f'/telegram/bot/{bot.id}')
