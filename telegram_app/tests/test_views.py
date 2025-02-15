@@ -82,3 +82,13 @@ class ConnectTelegramBotTest(TestCase):
 	# тест ответа бота на интерфейсе сайта.
 	# тест ответа бота на интерфейсе telegram.
 	# start_bot(request, bot_id): -> при передаче неправильного bot_id появляется страница с 404 / либо предупреждающая страница у вас нет такого бота.
+
+
+
+class ShowTelegramBotTest(TestCase):
+
+
+	def test_show_bot_with_invalid_bot_id(self):
+		"""Тест: появляется ошибка 404 при неправильном bot id."""
+		response = self.client.get('/telegram/bot/999999')
+		self.assertEqual(response.status_code, 404)
