@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib import messages
 
 from telegram_app.models import TelegramBot
 from telegram_app.forms import ConnectTelegramBotForm
@@ -27,3 +28,13 @@ def show_connected_bot(request, bot_id):
 
 	context = {'bot': bot}
 	return render(request, 'telegram_app/bot_page.html', context)
+
+
+def start_bot(request, bot_id):
+	"""Запускает Telegram bot."""
+	bot = TelegramBot.objects.get(id=bot_id)
+	bot.is_running = True
+	bot.save()
+
+	messages.success(request, "Бот запущен")
+	return redirect('telegram_app:show_connected_bot', bot_id=bot_id)
