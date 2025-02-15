@@ -86,9 +86,21 @@ class ConnectTelegramBotTest(TestCase):
 
 
 class ShowTelegramBotTest(TestCase):
+	"""Тест: страница с конкретным Telegram ботом."""
 
 
-	def test_show_bot_with_invalid_bot_id(self):
-		"""Тест: появляется ошибка 404 при неправильном bot id."""
+	def test_view_show_bot_with_invalid_bot_id(self):
+		"""Тест: появляется ошибка 404 при неправильном bot id для представления show_bot."""
 		response = self.client.get('/telegram/bot/999999')
+		self.assertEqual(response.status_code, 404)
+
+
+
+class StartTelegramBotTest(TestCase):
+	"""Тест: запуск Telegram бота."""
+
+
+	def test_view_start_bot_with_invalid_bot_id(self):
+		"""Тест: появляется ошибка 404 при неправильном bot id для представления start_bot."""
+		response = self.client.get('/telegra/bot/999999')
 		self.assertEqual(response.status_code, 404)
