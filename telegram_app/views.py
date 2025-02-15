@@ -15,7 +15,7 @@ def connect_bot(request):
 		form = ConnectTelegramBotForm(data=request.POST)
 		if form.is_valid():
 			bot = form.save()
-			return redirect('telegram_app:show_connected_bot', bot_id=bot.id)
+			return redirect('telegram_app:show_bot', bot_id=bot.id)
 	else:
 		form = ConnectTelegramBotForm()
 
@@ -23,7 +23,7 @@ def connect_bot(request):
 	return render(request, 'telegram_app/connect_bot.html', context)
 
 
-def show_connected_bot(request, bot_id):
+def show_bot(request, bot_id):
 	bot = TelegramBot.objects.get(id=bot_id)
 
 	context = {'bot': bot}
@@ -37,4 +37,4 @@ def start_bot(request, bot_id):
 	bot.save()
 
 	messages.success(request, "Бот запущен")
-	return redirect('telegram_app:show_connected_bot', bot_id=bot_id)
+	return redirect('telegram_app:show_bot', bot_id=bot_id)
