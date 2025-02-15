@@ -61,3 +61,24 @@ class ConnectTelegramBotTest(TestCase):
 			}
 		)
 		self.assertEqual(0, TelegramBot.objects.count())
+
+
+	def test_start_button_view(self):
+		"""Тест представления кнопки 'Запустить'."""
+		bot = TelegramBot.objects.create(
+			name='Telegram bot',
+			token='8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg',
+		)
+		response = self.client.post(
+			f'/telegram/bot/start/{bot.id}'
+		)
+
+		# Перенаправление на страницу с ботом. Бот запущен.
+		self.assertRedirects(response, f'/telegram/bot/{bot.id}')
+		bot.refresh_from_db()
+		self.assertTrue(bot.is_running)
+
+
+	# тест ответа бота на интерфейсе сайта.
+	# тест ответа бота на интерфейсе telegram.
+	# start_bot(request, bot_id): -> при передаче неправильного bot_id появляется страница с 404 / либо предупреждающая страница у вас нет такого бота.
