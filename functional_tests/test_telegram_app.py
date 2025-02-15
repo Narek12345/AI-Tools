@@ -13,7 +13,6 @@ class NewVisitorTest(FunctionalTest):
     """Тест нового посетителя."""
 
 
-    @wait
     def test_telegram_platform(self):
         """Тест: пользователь хочет прочитать больше о автоматизации в Telegram."""
 
@@ -50,6 +49,7 @@ class NewVisitorTest(FunctionalTest):
         # Открывается страница с добавленным только что ботом. Пользователь видит кнопку "Запустить" рядом с его созданным Telegram ботом. Пользователь нажимает на кнопку "Запустить".
         header_text = self.browser.find_element(By.TAG_NAME, "h2").text
         self.assertIn(header_text, "Telegram bot")
+        time.sleep(2)
         run_button = self.browser.find_element(By.XPATH, '//button[text()="Запустить"]')
         self.assertIsNotNone(run_button)
         run_button.click()
