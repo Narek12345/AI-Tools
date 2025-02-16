@@ -19,7 +19,7 @@ class ConnectTelegramBotTest(TestCase):
 	"""Тест подключения Telegram бота."""
 
 
-	def test_connect_telegram_bot(self):
+	def test_connect_telegram_bot_template(self):
 		"""Тест: подключение нового telegram bot."""
 		response = self.client.get('/telegram/connect-bot')
 		self.assertTemplateUsed(response, 'telegram_app/connect_bot.html')
@@ -63,22 +63,6 @@ class ConnectTelegramBotTest(TestCase):
 		self.assertEqual(0, TelegramBot.objects.count())
 
 
-	def test_start_button_view(self):
-		"""Тест представления кнопки 'Запустить'."""
-		bot = TelegramBot.objects.create(
-			name='Telegram bot',
-			token='8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg',
-		)
-		response = self.client.post(
-			f'/telegram/bot/start/{bot.id}'
-		)
-
-		# Перенаправление на страницу с ботом. Бот запущен.
-		self.assertRedirects(response, f'/telegram/bot/{bot.id}')
-		bot.refresh_from_db()
-		self.assertTrue(bot.is_running)
-
-
 
 class ShowTelegramBotTest(TestCase):
 	"""Тест: страница с конкретным Telegram ботом."""
@@ -113,6 +97,22 @@ class StartTelegramBotTest(TestCase):
 		)
 		response = self.client.get(f'/telegram/bot/start/{bot.id}')
 		self.assertRedirects(response, f'/telegram/bot/{bot.id}')
+
+
+	def test_start_button_view(self):
+		"""Тест представления кнопки 'Запустить'."""
+		bot = TelegramBot.objects.create(
+			name='Telegram bot',
+			token='8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg',
+		)
+		response = self.client.post(
+			f'/telegram/bot/start/{bot.id}'
+		)
+
+		# Перенаправление на страницу с ботом. Бот запущен.
+		self.assertRedirects(response, f'/telegram/bot/{bot.id}')
+		bot.refresh_from_db()
+		self.assertTrue(bot.is_running)
 
 
 	def test_view_start_bot_with_invalid_bot_id(self):
