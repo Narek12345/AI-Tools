@@ -84,6 +84,16 @@ class ShowTelegramBotTest(TestCase):
 	"""Тест: страница с конкретным Telegram ботом."""
 
 
+	def test_uses_bot_template(self):
+		"""Тест: используется шаблон бота с его информацией."""
+		bot = TelegramBot.objects.create(
+			name='Telegram bot',
+			token='8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg'
+		)
+		response = self.client.get(f'/telegram/bot/{bot.id}')
+		self.assertTemplateUsed(response, 'telegram_app/bot_page.html')
+
+
 	def test_view_show_bot_with_invalid_bot_id(self):
 		"""Тест: появляется ошибка 404 при неправильном bot id для представления show_bot."""
 		response = self.client.get('/telegram/bot/999999')
