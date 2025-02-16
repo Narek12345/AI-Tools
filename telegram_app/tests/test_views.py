@@ -25,7 +25,7 @@ class ConnectTelegramBotTest(TestCase):
 		self.assertTemplateUsed(response, 'telegram_app/connect_bot.html')
 
 
-	def test_bot_connection_page(self):
+	def test_redirect_to_bot_page_after_successful_connection(self):
 		"""Тест: перенаправление на страницу бота после успешного подключения."""
 		response = self.client.post(
 			'/telegram/connect-bot',
