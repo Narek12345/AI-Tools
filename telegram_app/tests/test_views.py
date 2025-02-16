@@ -105,6 +105,16 @@ class StartTelegramBotTest(TestCase):
 	"""Тест: запуск Telegram бота."""
 
 
+	def test_redirect_after_clicking_start_button(self):
+		"""Тест: перенаправление после нажатия кнопки 'Запустить'."""
+		bot = TelegramBot.objects.create(
+			name='Telegram bot',
+			token='8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg',
+		)
+		response = self.client.get(f'/telegram/bot/start/{bot.id}')
+		self.assertRedirects(response, f'/telegram/bot/{bot.id}')
+
+
 	def test_view_start_bot_with_invalid_bot_id(self):
 		"""Тест: появляется ошибка 404 при неправильном bot id для представления start_bot."""
 		response = self.client.get('/telegra/bot/999999')
