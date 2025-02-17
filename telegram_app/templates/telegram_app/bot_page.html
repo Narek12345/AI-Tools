@@ -11,5 +11,31 @@
     	</ul>
 	{% endif %}
 
-	<button onclick="location.href='{% url 'telegram_app:start_bot' bot.id %}'">Запустить</button>
+	<button id="start-bot-btn" onclick="startBot()">Запустить</button>
+
+	<div id="status"></div>
+
+    <script>
+        let socket;
+
+        function startBot() {
+            location.href = '{% url "telegram_app:start_bot" bot.id %}';
+
+            socket = new WebSocket('ws://' + window.location.host + '/ws/telegram_bot/status/{{ bot.id }}');
+
+            socket.onmessage = function(e) {
+                const data = JSON.parse(e.data);
+                const statusDiv = document.getElementById('status');
+
+                if (data.message) {
+                    // Обновляем статус на странице.
+                    statusDiv.innerHTML = '<p class="alert alert-info">' + data.message + '</p>';
+                }
+            };
+
+            socket.onclose = function(e) {
+                console.error('WebSocket closed unexpectedly');
+            };
+        }
+    </script>
 {% endblock %}
