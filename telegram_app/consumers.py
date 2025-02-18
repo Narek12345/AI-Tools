@@ -27,20 +27,9 @@ class TelegramBotStatusConsumer(AsyncWebsocketConsumer):
 
 	async def receive(self, text_data):
 		text_data_json = json.loads(text_data)
-		message = text_data_json['message']
-
-		await self.channel_layer.group_send(
-			self.room_group_name,
-			{
-				'type': 'status.message',
-				'message': message,
-			}
-		)
-
-
-	async def status_message(self, event):
-		message = event['message']
+		to_status = text_data_json['to_status']
+		bot_id = text_data_json['bot_id']
 
 		await self.send(text_data=json.dumps({
-			'message': message
+			'status': bot_id
 		}))
