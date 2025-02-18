@@ -1,46 +1,45 @@
 let socket;
 
 function startBot() {
-	// Показываем индикатор загрузки
-	document.getElementById('loading-indicator').style.display = 'block';
+    // Показываем индикатор загрузки
+    document.getElementById('loading-indicator').style.display = 'block';
 
-	// Инициализация WebSocket соединения
-	socket = new WebSocket('ws://' + window.location.host + '/ws/telegram_bot/status/' + botId + '/');
+    // Блокируем кнопку "Запустить", пока идет процесс запуска
+    const startButton = document.getElementById('start-bot-btn');
+    startButton.disabled = true;
 
-	// Обработчик получения сообщений
-	socket.onmessage = function(e) {
-		const data = JSON.parse(e.data);
-		const statusDiv = document.getElementById('status');
+    // Инициализация WebSocket соединения
+    socket = new WebSocket('ws://' + window.location.host + '/ws/telegram_bot/status/' + botId + '/');
 
-		if (data.status) {
-			// Обновление статуса на странице
-			statusDiv.innerHTML = '<p class="alert alert-info">' + data.status + '</p>';
-		}
+    // Обработчик получения сообщений
+    socket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        const statusDiv = document.getElementById('status');
 
-		// Скрываем индикатор загрузки, когда получен ответ
-		document.getElementById('loading-indicator').style.display = 'none';
-	};
+        // Обновление статуса на странице
+        if (data.status) {
+            statusDiv.innerHTML = '<p class="alert alert-info">' + data.status + '</p>';
+        }
 
-	// Обработчик закрытия соединения
-	socket.onclose = function(e) {
-		console.error('WebSocket closed unexpectedly');
+        // Скрываем индикатор загрузки
+        document.getElementById('loading-indicator').style.display = 'none';
 
-		// Скрываем индикатор загрузки, если соединение было закрыто
-		document.getElementById('loading-indicator').style.display = 'none';
-	};
+        // Включаем кнопку "Запустить" обратно после получения ответа
+        startButton.disabled = false;
+    };
 
-	// После того как WebSocket подключен, отправить сообщение
-	socket.onopen = function() {
-		document.querySelector('#start-bot-btn').onclick = function(e) {
-			// Проверяем, что WebSocket открыт
-			if (socket.readyState === WebSocket.OPEN) {
-				socket.send(JSON.stringify({
-					"to_status": "start",
-					"bot_id": botId,
-				}));
-			} else {
-				console.error('WebSocket is not open.');
-			}
-		};
-	};
+    // Обработчик закрытия соединения
+    socket.onclose = function(e) {
+        console.error('WebSocket closed unexpectedly');
+        document.getElementById('loading-indicator').style.display = 'none';
+        startButton.disabled = false;
+    };
+
+    // После того как WebSocket подключен, отправляем команду на запуск бота
+    socket.onopen = function() {
+        socket.send(JSON.stringify({
+            "to_status": "start",
+            "bot_id": botId
+        }));
+    };
 }
