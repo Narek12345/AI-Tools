@@ -36,3 +36,19 @@ class TelegramBotModelTest(TestCase):
 			token="8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg"
 		)
 		self.assertFalse(bot.is_running)
+
+
+
+class TelegramBotStatusModelTest(TestCase):
+
+
+	def test_bot_status_is_updated_when_is_running_is_updated(self):
+		bot = TelegramBot.objects.create(
+			name="Bot1",
+			token="8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg"
+		)
+		bot.is_running = True
+		bot.save()
+
+		bot_status = TelegramBotStatus.objects.get(bot=bot)
+		self.assertTrue(bot_status.is_running)
