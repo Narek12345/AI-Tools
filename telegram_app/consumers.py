@@ -13,17 +13,15 @@ class TelegramBotStatusConsumer(AsyncWebsocketConsumer):
 		self.room_group_name = f"bot_status_{self.bot_id}"
 
 		await self.channel_layer.group_add(
-			self.room_group_name,
-			self.channel_name
+			self.room_group_name, self.channel_name
 		)
 
-		self.accept()
+		await self.accept()
 
 
 	async def disconnect(self, close_code):
 		await self.channel_layer.group_discard(
-			self.room_group_name,
-			self.channel_name
+			self.room_group_name, self.channel_name
 		)
 
 
@@ -34,7 +32,7 @@ class TelegramBotStatusConsumer(AsyncWebsocketConsumer):
 		await self.channel_layer.group_send(
 			self.room_group_name,
 			{
-				'type': 'status_message',
+				'type': 'status.message',
 				'message': message,
 			}
 		)
