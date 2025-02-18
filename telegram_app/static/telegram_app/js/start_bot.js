@@ -12,9 +12,9 @@ function startBot() {
 		const data = JSON.parse(e.data);
 		const statusDiv = document.getElementById('status');
 
-		if (data.message) {
+		if (data.status) {
 			// Обновление статуса на странице
-			statusDiv.innerHTML = '<p class="alert alert-info">' + data.message + '</p>';
+			statusDiv.innerHTML = '<p class="alert alert-info">' + data.status + '</p>';
 		}
 
 		// Скрываем индикатор загрузки, когда получен ответ
@@ -35,7 +35,8 @@ function startBot() {
 			// Проверяем, что WebSocket открыт
 			if (socket.readyState === WebSocket.OPEN) {
 				socket.send(JSON.stringify({
-					'message': "Start"
+					"to_status": "start",
+					"bot_id": botId,
 				}));
 			} else {
 				console.error('WebSocket is not open.');
