@@ -1,40 +1,72 @@
 {% extends 'core_app/base.html' %}
 
 {% block content %}
-	<h2>{{ bot.name }}</h2>
+    <h2>{{ bot.name }}</h2>
 
-	{% if messages %}
-		<ul>
-    		{% for message in messages %}
-        		<li class="alert alert-success">{{ message }}</li>
-    		{% endfor %}
-    	</ul>
-	{% endif %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li class="alert alert-success">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
-	<button id="start-bot-btn" onclick="startBot()">Запустить</button>
+    <button id="start-bot-btn" onclick="startBot()">Запустить</button>
 
-	<div id="status"></div>
+    <!-- Индикатор загрузки -->
+    <div id="loading-indicator" style="display: none; text-align: center;">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+            <span class="sr-only"></span>
+        </div>
+        <p>Запускается...</p>
+    </div>
+
+    <div id="status"></div>
 
     <script>
         let socket;
 
         function startBot() {
-            location.href = '{% url "telegram_app:start_bot" bot.id %}';
+            // Показываем индикатор загрузки
+            document.getElementById('loading-indicator').style.display = 'block';
 
-            socket = new WebSocket('ws://' + window.location.host + '/ws/telegram_bot/status/{{ bot.id }}');
+            // Инициализация WebSocket соединения
+            socket = new WebSocket('ws://' + window.location.host + '/ws/telegram_bot/status/{{ bot.id }}' + '/');
 
+            // Обработчик получения сообщений
             socket.onmessage = function(e) {
                 const data = JSON.parse(e.data);
                 const statusDiv = document.getElementById('status');
 
                 if (data.message) {
-                    // Обновляем статус на странице.
+                    // Обновление статуса на странице
                     statusDiv.innerHTML = '<p class="alert alert-info">' + data.message + '</p>';
                 }
+
+                // Скрываем индикатор загрузки, когда получен ответ
+                document.getElementById('loading-indicator').style.display = 'none';
             };
 
+            // Обработчик закрытия соединения
             socket.onclose = function(e) {
                 console.error('WebSocket closed unexpectedly');
+
+                // Скрываем индикатор загрузки, если соединение было закрыто
+                document.getElementById('loading-indicator').style.display = 'none';
+            };
+
+            // После того как WebSocket подключен, отправить сообщение
+            socket.onopen = function() {
+                document.querySelector('#start-bot-btn').onclick = function(e) {
+                    // Проверяем, что WebSocket открыт
+                    if (socket.readyState === WebSocket.OPEN) {
+                        socket.send(JSON.stringify({
+                            'message': "Start"
+                        }));
+                    } else {
+                        console.error('WebSocket is not open.');
+                    }
+                };
             };
         }
     </script>
