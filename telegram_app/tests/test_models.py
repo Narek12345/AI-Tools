@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.core.exceptions import ValidationError
 
-from telegram_app.models import TelegramBot
+from telegram_app.models import TelegramBot, TelegramBotStatus
 
 
 
@@ -28,3 +28,11 @@ class TelegramBotModelTest(TestCase):
 				name="Bot2",
 				token="8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg"
 			)
+
+
+	def test_by_default_is_running_is_False(self):
+		bot = TelegramBot.objects.create(
+			name="Bot1",
+			token="8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg"
+		)
+		self.assertFalse(bot.is_running)
