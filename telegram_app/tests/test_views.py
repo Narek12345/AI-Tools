@@ -1,6 +1,11 @@
+import os
+
 from django.test import TestCase
 
 from telegram_app.models import TelegramBot
+
+
+TEST_TELEGRAM_BOT_TOKEN = os.getenv("TEST_TELEGRAM_BOT_TOKEN")
 
 
 
@@ -31,7 +36,7 @@ class ConnectTelegramBotTest(TestCase):
 			'/telegram/connect-bot',
 			data={
 				'name': 'Telegram bot',
-				'token': '8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg',
+				'token': TEST_TELEGRAM_BOT_TOKEN,
 			}
 		)
 		bot = TelegramBot.objects.first()
@@ -45,7 +50,7 @@ class ConnectTelegramBotTest(TestCase):
 			'/telegram/connect-bot',
 			data={
 				'name': 'Telegram bot',
-				'token': '8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg',
+				'token': TEST_TELEGRAM_BOT_TOKEN,
 			}
 		)
 		self.assertEqual(1, TelegramBot.objects.count())
@@ -72,7 +77,7 @@ class ShowTelegramBotTest(TestCase):
 		"""Тест: используется шаблон бота с его информацией."""
 		bot = TelegramBot.objects.create(
 			name='Telegram bot',
-			token='8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg'
+			token=TEST_TELEGRAM_BOT_TOKEN,
 		)
 		response = self.client.get(f'/telegram/bot/{bot.id}')
 		self.assertTemplateUsed(response, 'telegram_app/bot_page.html')
@@ -93,7 +98,7 @@ class StartTelegramBotTest(TestCase):
 		"""Тест: перенаправление после нажатия кнопки 'Запустить'."""
 		bot = TelegramBot.objects.create(
 			name='Telegram bot',
-			token='8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg',
+			token=TEST_TELEGRAM_BOT_TOKEN,
 		)
 		response = self.client.get(f'/telegram/bot/start/{bot.id}')
 		self.assertRedirects(response, f'/telegram/bot/{bot.id}')
@@ -103,7 +108,7 @@ class StartTelegramBotTest(TestCase):
 		"""Тест представления кнопки 'Запустить'."""
 		bot = TelegramBot.objects.create(
 			name='Telegram bot',
-			token='8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg',
+			token=TEST_TELEGRAM_BOT_TOKEN,
 		)
 		response = self.client.post(
 			f'/telegram/bot/start/{bot.id}'
