@@ -7,5 +7,5 @@ def home_page(request):
 	return render(request, 'core_app/home.html')
 
 
-def no_function(request):
-	return render(request, 'core_app/no_function.html')
+def in_development(request):
+	return render(request, 'core_app/in_development.html')
