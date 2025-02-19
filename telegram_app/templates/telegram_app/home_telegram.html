@@ -1,7 +1,22 @@
 {% extends 'core_app/base.html' %}
 
 {% block content %}
-	<h2>Telegram</h2>
+	<!-- Начало сайта -->
+	<div class="container text-center py-5">
+		<h2 class="display-3 fw-bold text-primary mb-4">
+			Telegram
+		</h2>
+		<p class="lead text-muted mb-5">
+			Упростите поддержку в Telegram с помощью нашей автоматизации.
+		</p>
+	</div>
 
-	<a href="{% url 'telegram_app:connect_bot' %}">Подключить бота</a>
+	<div class="d-grid gap-3 col-6 mx-auto">
+		<a href="{% url 'telegram_app:connect_bot' %}" class="btn btn-primary btn-lg">
+			Подключить бота
+		</a>
+		<a href="{% url 'core_app:no_function' %}" class="btn btn-secondary btn-lg">
+			Подключить аккаунт
+		</a>
+	</div>
 {% endblock %}
