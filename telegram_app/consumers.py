@@ -41,13 +41,10 @@ class TelegramBotStatusConsumer(AsyncWebsocketConsumer):
 		to_status = text_data_json['to_status']
 		bot_id = text_data_json['bot_id']
 
-		print(f"Received command for bot {bot_id} with status {to_status}")
-
 		bot = await self.get_bot(bot_id)
 
 		if not bot:
 			status_message = f"Бот с ID {bot_id} не найден."
-			print(status_message)
 			await self.send(text_data=json.dumps({
 				'status': status_message
 			}))
@@ -56,7 +53,6 @@ class TelegramBotStatusConsumer(AsyncWebsocketConsumer):
 		if to_status == "start":
 			docker_command = f"docker run -d --name bot_{bot.id} -e TELEGRAM_BOT_TOKEN={bot.token} telegram_bot"
 			try:
-				# Запуск команды docker асинхронно
 				process = await asyncio.create_subprocess_shell(
 					docker_command,
 					stdout=asyncio.subprocess.PIPE,
@@ -66,18 +62,14 @@ class TelegramBotStatusConsumer(AsyncWebsocketConsumer):
 
 				if process.returncode == 0:
 					status_message = "Бот успешно запущен!"
-					print("Docker container started successfully!")
 				else:
 					status_message = f"Ошибка при запуске Docker контейнера: {stderr.decode()}"
-					print(f"Error: {stderr.decode()}")
 			except Exception as e:
 				status_message = f"Ошибка при выполнении команды Docker: {str(e)}"
-				print(f"Exception: {str(e)}")
 		else:
 			status_message = "Другой статус."
-			print(status_message)
 
-		# Отправляем результат в WebSocket
+		# Отправляем результат в WebSocket.
 		await self.send(text_data=json.dumps({
 			'status': status_message
 		}))
