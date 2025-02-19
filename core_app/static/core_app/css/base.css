@@ -1,8 +1,10 @@
-
 /* Изменения фона и стилей */
 body {
     background-color: #f4f7fa;
     font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -12,6 +14,10 @@ header {
 header h1 {
     font-size: 2.5rem;
     font-weight: 700;
+}
+
+.container {
+    flex: 1;
 }
 
 .nav-item .nav-link {
