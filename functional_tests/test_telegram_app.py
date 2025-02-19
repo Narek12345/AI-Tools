@@ -1,3 +1,4 @@
+import os
 import time
 
 from selenium.webdriver.common.by import By
@@ -5,6 +6,9 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
 from .base import FunctionalTest, wait
+
+
+TEST_TELEGRAM_BOT_TOKEN = os.getenv("TEST_TELEGRAM_BOT_TOKEN")
 
 
 
@@ -42,7 +46,7 @@ class NewVisitorTest(FunctionalTest):
         bot_name_field = self.browser.find_element(By.NAME, "name")
         bot_name_field.send_keys("Telegram bot")
         bot_token_field = self.browser.find_element(By.NAME, "token")
-        bot_token_field.send_keys("8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg")
+        bot_token_field.send_keys(TEST_TELEGRAM_BOT_TOKEN)
         bot_token_field.send_keys(Keys.ENTER)
 
         # Открывается страница с добавленным только что ботом. Пользователь видит кнопку "Запустить" рядом с его созданным Telegram ботом. Пользователь нажимает на кнопку "Запустить".
