@@ -1,7 +1,12 @@
+import os
+
 from django.test import TestCase
 
 from telegram_app.models import TelegramBot
 from telegram_app.forms import ConnectTelegramBotForm
+
+
+TEST_TELEGRAM_BOT_TOKEN = os.getenv("TEST_TELEGRAM_BOT_TOKEN")
 
 
 
@@ -30,7 +35,7 @@ class ConnectTelegramBotFormTest(TestCase):
 		form = ConnectTelegramBotForm(
 			data={
 				'name': 'Telegram bot',
-				'token': '8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg'
+				'token': TEST_TELEGRAM_BOT_TOKEN,
 			}
 		)
 		self.assertTrue(form.is_valid())

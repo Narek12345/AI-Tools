@@ -1,9 +1,14 @@
+import os
+
 from django.test import TestCase
 from django.core.exceptions import ValidationError
 
 from datetime import datetime, timedelta
 
 from telegram_app.models import TelegramBot, TelegramBotStatus
+
+
+TEST_TELEGRAM_BOT_TOKEN = os.getenv("TEST_TELEGRAM_BOT_TOKEN")
 
 
 
@@ -22,20 +27,20 @@ class TelegramBotModelTest(TestCase):
 		"""Тест: повторы подключения Telegram ботов не допустимы."""
 		TelegramBot.objects.create(
 			name="Bot1",
-			token="8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg"
+			token=TEST_TELEGRAM_BOT_TOKEN,
 		)
 
 		with self.assertRaises(ValidationError):
 			TelegramBot.objects.create(
 				name="Bot2",
-				token="8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg"
+				token=TEST_TELEGRAM_BOT_TOKEN,
 			)
 
 
 	def test_by_default_is_running_is_False(self):
 		bot = TelegramBot.objects.create(
 			name="Bot1",
-			token="8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg"
+			token=TEST_TELEGRAM_BOT_TOKEN,
 		)
 		self.assertFalse(bot.is_running)
 
@@ -47,7 +52,7 @@ class TelegramBotStatusModelTest(TestCase):
 	def test_bot_status_updates_on_is_running_change(self):
 		bot = TelegramBot.objects.create(
 			name="Bot1",
-			token="8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg"
+			token=TEST_TELEGRAM_BOT_TOKEN,
 		)
 		bot.is_running = True
 		bot.save()
@@ -59,7 +64,7 @@ class TelegramBotStatusModelTest(TestCase):
 	def test_bot_status_is_updated_when_is_running_is_updated(self):
 		bot = TelegramBot.objects.create(
 			name="Bot1",
-			token="8083179427:AAF5z0kDDygySnBfzLAkYe9RFYcfcuC9pTg"
+			token=TEST_TELEGRAM_BOT_TOKEN,
 		)
 		bot.is_running = True
 		bot.save()
