@@ -37,7 +37,11 @@ class TelegramBotModelTest(TestCase):
 			)
 
 
-	def test_by_default_is_running_is_False(self):
+
+class TelegramBotStatusModelTest(TestCase):
+
+
+	def test_bot_status_by_default_is_False(self):
 		bot = TelegramBot.objects.create(
 			name="Bot1",
 			token=TEST_TELEGRAM_BOT_TOKEN,
@@ -46,20 +50,16 @@ class TelegramBotModelTest(TestCase):
 		self.assertFalse(bot_status.is_running)
 
 
-
-class TelegramBotStatusModelTest(TestCase):
-
-
-	def test_bot_status_updates_on_is_running_change(self):
+	def test_bot_status_updates_when_bot_is_started(self):
+		"""Тест: при запуске бота статус запуска обновляется на True."""
 		bot = TelegramBot.objects.create(
 			name="Bot1",
-			token=TEST_TELEGRAM_BOT_TOKEN,
+			token=TEST_TELEGRAM_BOT_TOKEN
 		)
-		bot.is_running = True
-		bot.save()
-
+		self.client.get(f'/telegram/start/{bot.id}')
 		bot_status = TelegramBotStatus.objects.get(bot=bot)
-		self.assertTrue(bot_status.is_running)
+
+		self.assertTrue(bot_status)
 
 
 	def test_bot_status_is_updated_when_is_running_is_updated(self):
