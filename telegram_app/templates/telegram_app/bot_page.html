@@ -21,6 +21,8 @@
 
         <p>Статус: <span id="is-running-status">{{ bot_status.is_running }}</span></p>
         <p>Дата обновления статуса: <span id="bot-status-update-at">{{ bot_status.updated_at }}</span></p>
+        <p>Дата создания бота: <span id="created-at">{{ bot.created_at }}</span></p>
+        <p>Дата обновления бота: <span id="updated-at">{{ bot.updated_at }}</span></p>
     </div>
 
     <button id="start-bot-btn" class="btn btn-success" onclick="startBot()">Запустить</button>
