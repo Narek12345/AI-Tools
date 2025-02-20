@@ -42,7 +42,8 @@ class TelegramBotModelTest(TestCase):
 			name="Bot1",
 			token=TEST_TELEGRAM_BOT_TOKEN,
 		)
-		self.assertFalse(bot.is_running)
+		bot_status = TelegramBotStatus.objects.get(bot=bot)
+		self.assertFalse(bot_status.is_running)
 
 
 
