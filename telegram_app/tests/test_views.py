@@ -106,7 +106,6 @@ class ShowTelegramBotTest(TestCase):
 
 
 
-
 class StartTelegramBotTest(TestCase):
 	"""Тест: запуск Telegram бота."""
 

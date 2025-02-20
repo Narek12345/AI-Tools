@@ -44,7 +44,7 @@ class NewVisitorTest(FunctionalTest):
         # Пользователь нажимает на кнопку "Подключить бота" для автоматизации.
         self.browser.find_element(By.LINK_TEXT, 'Подключить бота').click()
 
-        # Появляется форма для ввода данных для подключения Telegram бота. Пользователь вводит в форму название боту и свой Telegram bot token и нажимает Enter.
+        # Появляется форма для ввода данных для подключения Telegram бота. Пользователь вводит в форму название бота и свой Telegram bot token и нажимает Enter.
         bot_name_field = self.browser.find_element(By.NAME, "name")
         bot_name_field.send_keys(TEST_TELEGRAM_BOT_NAME)
         bot_token_field = self.browser.find_element(By.NAME, "token")
@@ -52,17 +52,26 @@ class NewVisitorTest(FunctionalTest):
         bot_token_field.send_keys(Keys.ENTER)
         now_time = datetime.now()
 
-        # Открывается страница с добавленным только что ботом. Пользователь видит на странице информацию о боте: name, is_running, created_at, updated_at. Также на странице есть кнопка "Запустить".
+        # Открывается страница с добавленным только что ботом.
+        # Пользователь видит название бота.
         header_text = self.browser.find_element(By.TAG_NAME, "h2").text
         self.assertEqual(header_text, TEST_TELEGRAM_BOT_NAME)
-        is_running_status = self.browser.find_element(By.TAG_NAME, "is_running_status").text
-        self.assertFalse(is_running_status)
-        created_at = self.browser.find_element(By.TAG_NAME, "created_at").text
+
+        # Пользователь видит статус бота.
+        is_running_status = self.browser.find_element(By.ID, "is-running-status").text
+        self.assertTrue(is_running_status == 'False')
+
+        # Пользователь видит дату обновления статуса бота.
+        bot_status_update_at = self.browser.find_element(By.ID, "bot-status-update-at").text
+        self.assertAlmostEqual(now_time, bot_status_update_at)
+
+        # Пользователь видит время создания бота.
+        created_at = self.browser.find_element(By.ID, "created-at").text
         self.assertAlmostEqual(now_time, created_at, delta=timedelta(seconds=1))
-        updated_at = self.browser.find_element(By.TAG_NAME, "updated_at").text
+
+        # Пользователь видит время обновления бота.
+        updated_at = self.browser.find_element(By.ID, "updated-at").text
         self.assertEqual(created_at, updated_at)
 
         # Пользователь нажимает на кнопку "Запустить".
         start_bot = self.browser.find_element(By.ID, "start-bot-btn").click()
-
-        self.fail("Нажал на кнопку 'Запустить'.")
