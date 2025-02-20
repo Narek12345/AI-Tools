@@ -26,6 +26,7 @@ class TelegramBotStatusConsumer(AsyncWebsocketConsumer):
 		await self.channel_layer.group_discard(
 			self.room_group_name, self.channel_name
 		)
+		await self.close()
 
 
 	@sync_to_async
