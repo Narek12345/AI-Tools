@@ -52,7 +52,7 @@ class NewVisitorTest(FunctionalTest):
         bot_token_field.send_keys(Keys.ENTER)
         now_time = datetime.now()
 
-        # Открывается страница с добавленным только что ботом. Пользователь видит на страницу информацию о боте: name, is_running, created_at, updated_at. Также на странице есть кнопка "Запустить".
+        # Открывается страница с добавленным только что ботом. Пользователь видит на странице информацию о боте: name, is_running, created_at, updated_at. Также на странице есть кнопка "Запустить".
         header_text = self.browser.find_element(By.TAG_NAME, "h2").text
         self.assertEqual(header_text, TEST_TELEGRAM_BOT_NAME)
         is_running_status = self.browser.find_element(By.TAG_NAME, "is_running_status").text

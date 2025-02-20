@@ -89,7 +89,7 @@ class ShowTelegramBotTest(TestCase):
 		self.assertEqual(response.status_code, 404)
 
 
-	def test_in_response_receives_bot_instance_and_status(self):
+	def test_in_response_receives_bot_instance_and_bot_status(self):
 		"""Тест: в ответ на запрос принимаем экземпляр бота и его статус."""
 		bot = TelegramBot.objects.create(
 			name='Telegram bot',
