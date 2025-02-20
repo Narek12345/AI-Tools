@@ -63,7 +63,9 @@ class NewVisitorTest(FunctionalTest):
 
         # Пользователь видит дату обновления статуса бота.
         bot_status_update_at = self.browser.find_element(By.ID, "bot-status-update-at").text
-        self.assertAlmostEqual(now_time, bot_status_update_at)
+        bot_status_update_at = bot_status_update_at.replace("p.m.", "PM").replace("a.m.", "AM")
+        bot_status_update_at = datetime.strptime(bot_status_update_at, "%b. %d, %Y, %I:%M %p")
+        self.assertAlmostEqual(now_time, bot_status_update_at, delta=timedelta(seconds=3))
 
         # Пользователь видит время создания бота.
         created_at = self.browser.find_element(By.ID, "created-at").text
