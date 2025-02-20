@@ -4,10 +4,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
+from datetime import datetime, timedelta
+
 from .base import FunctionalTest, wait
 
 
 TEST_TELEGRAM_BOT_TOKEN = os.getenv("TEST_TELEGRAM_BOT_TOKEN")
+TEST_TELEGRAM_BOT_NAME = "Telegram bot"
 
 
 
@@ -43,16 +46,23 @@ class NewVisitorTest(FunctionalTest):
 
         # Появляется форма для ввода данных для подключения Telegram бота. Пользователь вводит в форму название боту и свой Telegram bot token и нажимает Enter.
         bot_name_field = self.browser.find_element(By.NAME, "name")
-        bot_name_field.send_keys("Telegram bot")
+        bot_name_field.send_keys(TEST_TELEGRAM_BOT_NAME)
         bot_token_field = self.browser.find_element(By.NAME, "token")
         bot_token_field.send_keys(TEST_TELEGRAM_BOT_TOKEN)
         bot_token_field.send_keys(Keys.ENTER)
+        now_time = datetime.now()
 
-        # Открывается страница с добавленным только что ботом. Пользователь видит кнопку "Запустить" рядом с его созданным Telegram ботом. Пользователь нажимает на кнопку "Запустить".
+        # Открывается страница с добавленным только что ботом. Пользователь видит на страницу информацию о боте: name, is_running, created_at, updated_at. Также на странице есть кнопка "Запустить".
         header_text = self.browser.find_element(By.TAG_NAME, "h2").text
-        self.assertIn(header_text, "Telegram bot")
-        run_button = self.browser.find_element(By.XPATH, '//button[text()="Запустить"]')
-        self.assertIsNotNone(run_button)
-        run_button.click()
+        self.assertEqual(header_text, TEST_TELEGRAM_BOT_NAME)
+        is_running_status = self.browser.find_element(By.TAG_NAME, "is_running_status").text
+        self.assertFalse(is_running_status)
+        created_at = self.browser.find_element(By.TAG_NAME, "created_at").text
+        self.assertAlmostEqual(now_time, created_at, delta=timedelta(seconds=1))
+        updated_at = self.browser.find_element(By.TAG_NAME, "updated_at").text
+        self.assertEqual(created_at, updated_at)
 
-        self.fail("Нажимает на кнопку 'Запустить'.")
+        # Пользователь нажимает на кнопку "Запустить".
+        start_bot = self.browser.find_element(By.ID, "start-bot-btn").click()
+
+        self.fail("Нажал на кнопку 'Запустить'.")
