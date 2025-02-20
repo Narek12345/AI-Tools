@@ -133,8 +133,8 @@ class StartTelegramBotTest(TestCase):
 
 		# Перенаправление на страницу с ботом. Бот запущен.
 		self.assertRedirects(response, f'/telegram/bot/{bot.id}')
-		bot.refresh_from_db()
-		self.assertTrue(bot.is_running)
+		bot_status = TelegramBotStatus.objects.get(bot=bot)
+		self.assertTrue(bot_status.is_running)
 
 
 	def test_view_start_bot_with_invalid_bot_id(self):
