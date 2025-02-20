@@ -34,8 +34,9 @@ def show_bot(request, bot_id):
 def start_bot(request, bot_id):
 	"""Запускает Telegram bot."""
 	bot = get_object_or_404(TelegramBot, id=bot_id)
-	bot.is_running = True
-	bot.save()
+	bot_status = TelegramBotStatus.objects.get(bot=bot)
+	bot_status.is_running = True
+	bot_status.save()
 
 	messages.success(request, "Бот запущен")
 	return redirect('telegram_app:show_bot', bot_id=bot_id)
