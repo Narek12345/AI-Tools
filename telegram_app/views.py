@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
 
-from telegram_app.models import TelegramBot
+from telegram_app.models import TelegramBot, TelegramBotStatus
 from telegram_app.forms import ConnectTelegramBotForm
 
 
@@ -25,8 +25,9 @@ def connect_bot(request):
 
 def show_bot(request, bot_id):
 	bot = get_object_or_404(TelegramBot, id=bot_id)
+	bot_status = TelegramBotStatus.objects.get(bot=bot)
 
-	context = {'bot': bot}
+	context = {'bot': bot, 'bot_status': bot_status}
 	return render(request, 'telegram_app/bot_page.html', context)
 
 
