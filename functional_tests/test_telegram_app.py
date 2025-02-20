@@ -80,4 +80,4 @@ class NewVisitorTest(FunctionalTest):
         self.assertEqual(created_at, updated_at)
 
         # Пользователь нажимает на кнопку "Запустить".
-        start_bot = self.browser.find_element(By.ID, "start-bot-btn").click()
+        self.browser.find_element(By.ID, "start-bot-btn").click()
