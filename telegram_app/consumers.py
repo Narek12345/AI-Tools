@@ -4,7 +4,7 @@ import asyncio
 from asgiref.sync import sync_to_async
 from channels.generic.websocket import AsyncWebsocketConsumer
 
-from telegram_app.models import TelegramBot
+from telegram_app.models import TelegramBot, TelegramBotStatus
 
 
 
@@ -36,6 +36,13 @@ class TelegramBotStatusConsumer(AsyncWebsocketConsumer):
 			return None
 
 
+	@sync_to_async
+	def change_bot_status(self, bot, bot_status):
+		new_bot_status = TelegramBotStatus.objects.get(bot=bot)
+		new_bot_status.is_running = bot_status
+		new_bot_status.save()
+
+
 	async def receive(self, text_data):
 		text_data_json = json.loads(text_data)
 		to_status = text_data_json['to_status']
@@ -62,6 +69,7 @@ class TelegramBotStatusConsumer(AsyncWebsocketConsumer):
 
 				if process.returncode == 0:
 					status_message = "Бот успешно запущен!"
+					await self.change_bot_status(bot, True)
 				else:
 					status_message = f"Ошибка при запуске Docker контейнера: {stderr.decode()}"
 			except Exception as e:
