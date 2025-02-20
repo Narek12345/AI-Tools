@@ -2,7 +2,7 @@ import os
 
 from django.test import TestCase
 
-from telegram_app.models import TelegramBot
+from telegram_app.models import TelegramBot, TelegramBotStatus
 
 
 TEST_TELEGRAM_BOT_TOKEN = os.getenv("TEST_TELEGRAM_BOT_TOKEN")
@@ -87,6 +87,23 @@ class ShowTelegramBotTest(TestCase):
 		"""Тест: появляется ошибка 404 при неправильном bot id для представления show_bot."""
 		response = self.client.get('/telegram/bot/999999')
 		self.assertEqual(response.status_code, 404)
+
+
+	def test_in_response_receives_bot_instance_and_status(self):
+		"""Тест: в ответ на запрос принимаем экземпляр бота и его статус."""
+		bot = TelegramBot.objects.create(
+			name='Telegram bot',
+			token=TEST_TELEGRAM_BOT_TOKEN,
+		)
+		bot_status = TelegramBotStatus.objects.get(bot=bot)
+
+		response = self.client.get(f'/telegram/bot/{bot.id}')
+		bot_from_response = response.context['bot']
+		bot_status_from_response = response.context['bot_status']
+
+		self.assertEqual(bot, bot_from_response)
+		self.assertEqual(bot_status, bot_status_from_response)
+
 
 
 
