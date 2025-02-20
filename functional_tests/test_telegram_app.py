@@ -50,7 +50,7 @@ class NewVisitorTest(FunctionalTest):
         bot_token_field = self.browser.find_element(By.NAME, "token")
         bot_token_field.send_keys(TEST_TELEGRAM_BOT_TOKEN)
         bot_token_field.send_keys(Keys.ENTER)
-        now_time = datetime.now()
+        now_time = datetime.now().replace(second=0, microsecond=0)
 
         # Открывается страница с добавленным только что ботом.
         # Пользователь видит название бота.
@@ -69,10 +69,14 @@ class NewVisitorTest(FunctionalTest):
 
         # Пользователь видит время создания бота.
         created_at = self.browser.find_element(By.ID, "created-at").text
-        self.assertAlmostEqual(now_time, created_at, delta=timedelta(seconds=1))
+        created_at = created_at.replace("p.m.", "PM").replace("a.m.", "AM")
+        created_at = datetime.strptime(created_at, "%b. %d, %Y, %I:%M %p")
+        self.assertAlmostEqual(now_time, created_at, delta=timedelta(seconds=3))
 
         # Пользователь видит время обновления бота.
         updated_at = self.browser.find_element(By.ID, "updated-at").text
+        updated_at = updated_at.replace("p.m.", "PM").replace("a.m.", "AM")
+        updated_at = datetime.strptime(updated_at, "%b. %d, %Y, %I:%M %p")
         self.assertEqual(created_at, updated_at)
 
         # Пользователь нажимает на кнопку "Запустить".
